@@ -139,6 +139,8 @@ enum custom_keycodes {
     RC_DLR,
     LA_ZOUT,
     RA_ZIN,
+    RS_MEH,
+    LS_MEH,
     LAST_DUAL, // do not remove
 
     // Custom layer keys
@@ -214,7 +216,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // Set your custom layout here!
     [_CUSTOM] = LAYOUT_3x12_6(
             LW_GRV,  KC_Q,    KC_W,    KC_D,    KC_F,    KC_P,    KC_K,    KC_L,    KC_U,    KC_Y,    KC_QUOT, RW_EQU,
-            LC_TAB,  KC_A,    KC_R,    KC_S,    KC_T,    KC_G,    KC_H,    KC_N,    KC_E,    KC_O,    KC_I,    RC_SCLN,
+            LC_TAB,  KC_A,    KC_R,    KC_S,    KC_T,    LS_MEH,  RS_MEH,  KC_N,    KC_E,    KC_O,    KC_I,    RC_SCLN,
             LA_ZOUT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_J,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, RA_ZIN,
                                        LLS_ESC, LS_SPC,  LLA_DEL, LLE_ENT, RS_BPC,  LLS_COMP
     ),
@@ -313,6 +315,10 @@ static modtap modtaps[] = {
     {.mod = KC_RWIN, .tap = KC_EQL},
     // RC_QUT
     {.mod = KC_RCTL, .tap = KC_QUOT},
+    // RS_MEH
+    {.mod = KC_MEH, .tap = KC_H},
+    // LS_MEH
+    {.mod = KC_MEH, .tap = KC_G, .left = true},
     // RC_SCLN
     {.mod = KC_RCTL, .tap = KC_SCLN},
     // RC_SLSH
