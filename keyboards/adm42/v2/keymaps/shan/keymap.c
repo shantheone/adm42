@@ -103,11 +103,6 @@ static union {
 
 enum custom_layers {
     _QWERTY,
-    _COLEMAKDH,
-    _COLEMAX,
-    _DVORAK,
-    _COLEMAK,
-    _CUSTOM,
 
     _SPECIAL,
     _EXTRA,
@@ -139,8 +134,8 @@ enum custom_keycodes {
     RC_DLR,
     LA_ZOUT,
     RA_ZIN,
-    RS_MEH,
-    LS_MEH,
+    R_MEH,
+    L_MEH,
     LAST_DUAL, // do not remove
 
     // Custom layer keys
@@ -180,43 +175,8 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWERTY] = LAYOUT_3x12_6(
-            LW_GRV,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    RW_EQU,
-            LC_TAB,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, RC_QUT,
-            LA_ZOUT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, RA_ZIN,
-                                       LLS_ESC, LS_BPC,  LLA_DEL, LLE_ENT, RS_SPC,  LLS_COMP
-    ),
-    [_COLEMAKDH] = LAYOUT_3x12_6(
-            LW_GRV,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, RW_EQU,
-            LC_TAB,  KC_A,    KC_R,    KC_S,    KC_T,    KC_G,    KC_M,    KC_N,    KC_E,    KC_I,    KC_O,    RC_QUT,
-            LA_ZOUT, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH, RA_ZIN,
-                                       LLS_ESC, LS_BPC,  LLA_DEL, LLE_ENT, RS_SPC,  LLS_COMP
-    ),
-    [_COLEMAX] = LAYOUT_3x12_6(
-            LW_GRV,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,    KC_K,    KC_L,    KC_U,    KC_Y,    KC_QUOT, RW_EQU,
-            LC_TAB,  KC_A,    KC_R,    KC_S,    KC_T,    KC_D,    KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    RC_SCLN,
-            LA_ZOUT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_J,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, RA_ZIN,
-                                       LLS_ESC, LS_BPC,  LLA_DEL, LLE_ENT, RS_SPC,  LLS_COMP
-    ),
-    [_COLEMAK] = LAYOUT_3x12_6(
-            LW_GRV,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, RW_EQU,
-            LC_TAB,  KC_A,    KC_R,    KC_S,    KC_T,    KC_D,    KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    RC_QUT,
-            LA_ZOUT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, RA_ZIN,
-                                       LLS_ESC, LS_BPC,  LLA_DEL, LLE_ENT, RS_SPC,  LLS_COMP
-    ),
-    // DVORAK has one additional key (UNDS) on its layout, that's why the 2
-    // adaptions have been done in order to keep UNDS on the second layer:
-    // - RC_SCLN instead of RC_UNDS
-    // - LW_GRV instead of LW_SCLN
-    [_DVORAK] = LAYOUT_3x12_6(
-            LW_GRV,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    RW_EQU,
-            LC_TAB,  KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    RC_SLSH,
-            LA_ZOUT, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,    KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    RA_ZIN,
-                                       LLS_ESC, LS_BPC,  LLA_DEL, LLE_ENT, RS_SPC,  LLS_COMP
-    ),
-    // Set your custom layout here!
-    [_CUSTOM] = LAYOUT_3x12_6(
             LW_GRV,  KC_Q,    KC_W,    KC_D,    KC_F,    KC_P,    KC_K,    KC_L,    KC_U,    KC_Y,    KC_QUOT, RW_EQU,
-            LC_TAB,  KC_A,    KC_R,    KC_S,    KC_T,    LS_MEH,  RS_MEH,  KC_N,    KC_E,    KC_O,    KC_I,    RC_SCLN,
+            LC_TAB,  KC_A,    KC_R,    KC_S,    KC_T,    L_MEH,   R_MEH,   KC_N,    KC_E,    KC_O,    KC_I,    RC_SCLN,
             LA_ZOUT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_J,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, RA_ZIN,
                                        LLS_ESC, LS_SPC,  LLA_DEL, LLE_ENT, RS_BPC,  LLS_COMP
     ),
@@ -239,9 +199,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                             SETUP,   LS_SPC,  _______, XXXXXXX, RS_BPC,  KC_TAB
       ),
     [_SETUP] = LAYOUT_3x12_6(
-            REFLASH, XXXXXXX, DF_COMK, XXXXXXX, XXXXXXX, XXXXXXX, PEN_WIN, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, ADM_INF,
-            XXXXXXX, DF_QWER, DF_CODH, DF_DVRK, DF_CUST, XXXXXXX, PEN_CTRL, OPP_TOGG, ERE_TOGG, XXXXXXX, XXXXXXX, XXXXXXX,
-            XXXXXXX, XXXXXXX, DF_COMX, XXXXXXX, XXXXXXX, XXXXXXX, PEN_ALT, ALT_SEL, XXXXXXX, XXXXXXX, XXXXXXX, EE_CLR,
+            REFLASH, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, PEN_WIN, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, ADM_INF,
+            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, PEN_CTRL, OPP_TOGG, ERE_TOGG, XXXXXXX, XXXXXXX, XXXXXXX,
+            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, PEN_ALT, ALT_SEL, XXXXXXX, XXXXXXX, XXXXXXX, EE_CLR,
                                        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, PEN_SHFT, COMP_SEL
     ),
 };
@@ -315,9 +275,9 @@ static modtap modtaps[] = {
     {.mod = KC_RWIN, .tap = KC_EQL},
     // RC_QUT
     {.mod = KC_RCTL, .tap = KC_QUOT},
-    // RS_MEH
+    // R_MEH
     {.mod = KC_MEH, .tap = KC_H},
-    // LS_MEH
+    // L_MEH
     {.mod = KC_MEH, .tap = KC_G, .left = true},
     // RC_SCLN
     {.mod = KC_RCTL, .tap = KC_SCLN},
@@ -602,21 +562,6 @@ void adm_info(void) {
     switch (get_highest_layer(default_layer_state)) {
      case _QWERTY:
         PK("QWERTY\n");
-        break;
-     case _COLEMAK:
-        PK("Colemak\n");
-        break;
-     case _COLEMAKDH:
-        PK("Colemak-DH\n");
-        break;
-     case _COLEMAX:
-        PK("ColeMAX\n");
-        break;
-     case _DVORAK:
-        PK("Dvorak\n");
-        break;
-     case _CUSTOM:
-        PK("CUSTOM\n");
         break;
     }
 
@@ -1053,21 +998,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         switch (keycode) {
          case DF_QWER:
             set_single_persistent_default_layer(_QWERTY);
-            return false;
-         case DF_COMK:
-            set_single_persistent_default_layer(_COLEMAK);
-            return false;
-         case DF_CODH:
-            set_single_persistent_default_layer(_COLEMAKDH);
-            return false;
-         case DF_COMX:
-            set_single_persistent_default_layer(_COLEMAX);
-            return false;
-         case DF_DVRK:
-            set_single_persistent_default_layer(_DVORAK);
-            return false;
-         case DF_CUST:
-            set_single_persistent_default_layer(_CUSTOM);
             return false;
          case REFLASH:
             reset = true;
