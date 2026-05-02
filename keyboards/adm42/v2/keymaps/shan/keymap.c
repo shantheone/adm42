@@ -103,10 +103,6 @@ static union {
 
 enum custom_layers {
     _QWERTY,
-    _COLEMAKDH,
-    _COLEMAX,
-    _DVORAK,
-    _COLEMAK,
     _CUSTOM,
 
     _SPECIAL,
@@ -139,6 +135,12 @@ enum custom_keycodes {
     RC_DLR,
     LA_ZOUT,
     RA_ZIN,
+    LW_SPC,
+    LS_GRV,
+    LS_F11,
+    RW_BPC,
+    RS_EQU,
+    RS_F12,
     LAST_DUAL, // do not remove
 
     // Custom layer keys
@@ -160,10 +162,6 @@ enum custom_keycodes {
     RGB_WPM,
 
     DF_QWER,
-    DF_COMK,
-    DF_CODH,
-    DF_COMX,
-    DF_DVRK,
     DF_CUST,
     ADM_INF,
     PEN_WIN,
@@ -183,40 +181,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             LA_ZOUT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, RA_ZIN,
                                        LLS_ESC, LS_BPC,  LLA_DEL, LLE_ENT, RS_SPC,  LLS_COMP
     ),
-    [_COLEMAKDH] = LAYOUT_3x12_6(
-            LW_GRV,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, RW_EQU,
-            LC_TAB,  KC_A,    KC_R,    KC_S,    KC_T,    KC_G,    KC_M,    KC_N,    KC_E,    KC_I,    KC_O,    RC_QUT,
-            LA_ZOUT, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH, RA_ZIN,
-                                       LLS_ESC, LS_BPC,  LLA_DEL, LLE_ENT, RS_SPC,  LLS_COMP
-    ),
-    [_COLEMAX] = LAYOUT_3x12_6(
-            LW_GRV,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,    KC_K,    KC_L,    KC_U,    KC_Y,    KC_QUOT, RW_EQU,
-            LC_TAB,  KC_A,    KC_R,    KC_S,    KC_T,    KC_D,    KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    RC_SCLN,
-            LA_ZOUT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_J,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, RA_ZIN,
-                                       LLS_ESC, LS_BPC,  LLA_DEL, LLE_ENT, RS_SPC,  LLS_COMP
-    ),
-    [_COLEMAK] = LAYOUT_3x12_6(
-            LW_GRV,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, RW_EQU,
-            LC_TAB,  KC_A,    KC_R,    KC_S,    KC_T,    KC_D,    KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    RC_QUT,
-            LA_ZOUT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, RA_ZIN,
-                                       LLS_ESC, LS_BPC,  LLA_DEL, LLE_ENT, RS_SPC,  LLS_COMP
-    ),
-    // DVORAK has one additional key (UNDS) on its layout, that's why the 2
-    // adaptions have been done in order to keep UNDS on the second layer:
-    // - RC_SCLN instead of RC_UNDS
-    // - LW_GRV instead of LW_SCLN
-    [_DVORAK] = LAYOUT_3x12_6(
-            LW_GRV,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    RW_EQU,
-            LC_TAB,  KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    RC_SLSH,
-            LA_ZOUT, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,    KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    RA_ZIN,
-                                       LLS_ESC, LS_BPC,  LLA_DEL, LLE_ENT, RS_SPC,  LLS_COMP
-    ),
     // Set your custom layout here!
     [_CUSTOM] = LAYOUT_3x12_6(
-            LW_GRV,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    RW_EQU,
+            LS_GRV,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    RS_EQU,
             LC_TAB,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, RC_QUT,
             KC_LALT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RALT,
-                                       LLS_ESC, LS_SPC,  LLA_DEL, LLE_ENT, RS_BPC,  LLS_COMP
+                                       LLS_ESC, LW_SPC,  LLA_DEL, LLE_ENT, RW_BPC,  LLS_COMP
     ),
     [_SPECIAL] = LAYOUT_3x12_6(
             KC_LWIN, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_RWIN,
@@ -225,7 +195,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                        CWD_TOG, _______, KC_DEL,  KC_ENT,  _______, CWD_TOG
     ),
     [_EXTRA] = LAYOUT_3x12_6(
-            LW_F11,  KC_F1,      KC_F2,      KC_F3,      KC_F4,      KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,        RW_F12,
+            LS_F11,  KC_F1,      KC_F2,      KC_F3,      KC_F4,      KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,        RS_F12,
             KC_LCTL, KC_SLEP,    LSG(KC_4),  KC_VOLD,    KC_VOLU,    KC_MUTE, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_MS_WH_UP,   KC_RCTL,
             KC_LALT, LGUI(KC_Z), LGUI(KC_X), LGUI(KC_C), LGUI(KC_V), KC_MPLY, KC_HOME, KC_PGDN, KC_MS_U, KC_END,  KC_MS_WH_DOWN, LOR_ALT,
                                        KC_ESC,  _______, KC_DEL,     _______, KC_BTN1, KC_BTN2
@@ -237,10 +207,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                        XXXXXXX, XXXXXXX, XXXXXXX, SETUP,  KC_BSPC, KC_ENT 
     ),
     [_SETUP] = LAYOUT_3x12_6(
-            REFLASH, XXXXXXX, DF_COMK, XXXXXXX, XXXXXXX, XXXXXXX, PEN_WIN, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, ADM_INF,
-            XXXXXXX, DF_QWER, DF_CODH, DF_DVRK, DF_CUST, XXXXXXX, PEN_CTRL, OPP_TOGG, ERE_TOGG, XXXXXXX, XXXXXXX, XXXXXXX,
-            XXXXXXX, XXXXXXX, DF_COMX, XXXXXXX, XXXXXXX, XXXXXXX, PEN_ALT, ALT_SEL, XXXXXXX, XXXXXXX, XXXXXXX, EE_CLR,
-                                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, PEN_SHFT, COMP_SEL
+            REFLASH, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, PEN_WIN,  XXXXXXX,  XXXXXXX,  XXXXXXX, XXXXXXX, ADM_INF,
+            XXXXXXX, DF_QWER, XXXXXXX, XXXXXXX, DF_CUST, XXXXXXX, PEN_CTRL, OPP_TOGG, ERE_TOGG, XXXXXXX, XXXXXXX, XXXXXXX,
+            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, PEN_ALT,  ALT_SEL,  XXXXXXX,  XXXXXXX, XXXXXXX, EE_CLR,
+                                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  PEN_SHFT, COMP_SEL
     ),
 };
 
@@ -333,6 +303,18 @@ static modtap modtaps[] = {
     {.mod = KC_LALT, .tap = KC_UNDS, .left = true, .mods = MOD_BIT(KC_LCTL)},
     // RA_ZIN  (MODs may be adapted based on OS detection)
     {.mod = KC_RALT, .tap = KC_EQL, .mods = MOD_BIT(KC_LCTL)},
+    // LW_SPC
+    {.mod = KC_LWIN, .tap = KC_SPC, .left = true},
+    // LS_GRV
+    {.mod = KC_LSFT, .tap = KC_GRV, .left = true},
+    // LS_F11
+    {.mod = KC_LSFT, .tap = KC_F11, .left = true},
+    // RW_BPC
+    {.mod = KC_RWIN, .tap = KC_BSPC},
+    // RS_EQU
+    {.mod = KC_RSFT, .tap = KC_EQL},
+    // RS_F12
+    {.mod = KC_RSFT, .tap = KC_F12},
 };
 
 #define MODTAP(X) modtaps[X - FIRST_DUAL - 1]
@@ -596,18 +578,6 @@ void adm_info(void) {
     switch (get_highest_layer(default_layer_state)) {
      case _QWERTY:
         PK("QWERTY\n");
-        break;
-     case _COLEMAK:
-        PK("Colemak\n");
-        break;
-     case _COLEMAKDH:
-        PK("Colemak-DH\n");
-        break;
-     case _COLEMAX:
-        PK("ColeMAX\n");
-        break;
-     case _DVORAK:
-        PK("Dvorak\n");
         break;
      case _CUSTOM:
         PK("CUSTOM\n");
@@ -1047,18 +1017,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         switch (keycode) {
          case DF_QWER:
             set_single_persistent_default_layer(_QWERTY);
-            return false;
-         case DF_COMK:
-            set_single_persistent_default_layer(_COLEMAK);
-            return false;
-         case DF_CODH:
-            set_single_persistent_default_layer(_COLEMAKDH);
-            return false;
-         case DF_COMX:
-            set_single_persistent_default_layer(_COLEMAX);
-            return false;
-         case DF_DVRK:
-            set_single_persistent_default_layer(_DVORAK);
             return false;
          case DF_CUST:
             set_single_persistent_default_layer(_CUSTOM);
