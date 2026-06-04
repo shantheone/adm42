@@ -103,7 +103,6 @@ static union {
 
 enum custom_layers {
     _QWERTY,
-    _CUSTOM,
 
     _SPECIAL,
     _EXTRA,
@@ -161,8 +160,6 @@ enum custom_keycodes {
     KGB_BLU,
     RGB_WPM,
 
-    DF_QWER,
-    DF_CUST,
     ADM_INF,
     PEN_WIN,
     PEN_CTRL,
@@ -179,13 +176,6 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWERTY] = LAYOUT_3x12_6(
-            LW_GRV,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    RW_EQU,
-            LC_TAB,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, RC_QUT,
-            LA_ZOUT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, RA_ZIN,
-                                       LLS_ESC, LS_BPC,  LLA_DEL, LLE_ENT, RS_SPC,  LLS_COMP
-    ),
-    // Set your custom layout here!
-    [_CUSTOM] = LAYOUT_3x12_6(
             LS_GRV,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    RS_EQU,
             LC_TAB,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, RC_QUT,
             KC_LALT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RALT,
@@ -211,7 +201,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_SETUP] = LAYOUT_3x12_6(
             REFLASH, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, PEN_WIN,  XXXXXXX,  XXXXXXX,  XXXXXXX, XXXXXXX, ADM_INF,
-            XXXXXXX, DF_QWER, XXXXXXX, XXXXXXX, DF_CUST, XXXXXXX, PEN_CTRL, OPP_TOGG, ERE_TOGG, XXXXXXX, XXXXXXX, XXXXXXX,
+            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, PEN_CTRL, OPP_TOGG, ERE_TOGG, XXXXXXX, XXXXXXX, XXXXXXX,
             XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, PEN_ALT,  ALT_SEL,  XXXXXXX,  XXXXXXX, XXXXXXX, EE_CLR,
                                        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  PEN_SHFT, COMP_SEL
     ),
@@ -581,9 +571,6 @@ void adm_info(void) {
     switch (get_highest_layer(default_layer_state)) {
      case _QWERTY:
         PK("QWERTY\n");
-        break;
-     case _CUSTOM:
-        PK("CUSTOM\n");
         break;
     }
 
@@ -1019,12 +1006,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
         switch (keycode) {
          case QMK_DATE:
-            SEND_STRING("19790814");
-         case DF_QWER:
-            set_single_persistent_default_layer(_QWERTY);
-            return false;
-         case DF_CUST:
-            set_single_persistent_default_layer(_CUSTOM);
+            send_string("19790814");
             return false;
          case REFLASH:
             reset = true;
