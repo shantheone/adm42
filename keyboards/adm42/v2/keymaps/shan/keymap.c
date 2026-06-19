@@ -146,8 +146,10 @@ enum custom_keycodes {
     FIRST_LAYER, // do not remove
     LLS_ESC,
     LLS_COMP,
+    LLS_DEL,
     LLE_ENT,
     LLA_DEL,
+    LLA_TAB,
     LAST_LAYER, // do not remove
 
     COMPOSE,
@@ -180,19 +182,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             LS_GRV,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    RS_EQU,
             LC_TAB,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, RC_QUT,
             KC_LALT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RALT,
-                                       LLS_ESC, LW_SPC,  LLA_DEL, LLE_ENT, RW_BPC,  LLS_COMP
+                                       LLS_ESC, LW_SPC,  LLA_TAB, LLE_ENT, RW_BPC,  LLS_DEL
     ),
     [_SPECIAL] = LAYOUT_3x12_6(
             KC_LSFT, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_RSFT,
             LC_CIRC, KC_LBRC, KC_RBRC, KC_LPRN, KC_RPRN, KC_EXLM, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_MINS, RC_DLR,
             KC_LALT, KC_AMPR, KC_AT,   KC_LCBR, KC_RCBR, KC_PIPE, KC_UNDS, KC_ASTR, KC_HASH, KC_PERC, KC_BSLS, LOR_ALT,
-                                       CWD_TOG, _______, KC_DEL,  KC_ENT,  _______, CWD_TOG
+                                       CWD_TOG, _______, KC_TAB,  KC_ENT,  _______, CWD_TOG
     ),
     [_EXTRA] = LAYOUT_3x12_6(
             LS_F11,  KC_F1,      KC_F2,     KC_F3,              KC_F4,        KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,        RS_F12,
             KC_LCTL, KC_SLEP,    LSG(KC_4), KC_VOLD,            KC_VOLU,      KC_MUTE, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_MS_WH_UP,   KC_RCTL,
             KC_LALT, QMK_DATE,   QMK_PASS,  LCTL(RSFT(KC_TAB)), LCTL(KC_TAB), KC_MPLY, KC_HOME, KC_PGDN, KC_MS_U, KC_END,  KC_MS_WH_DOWN, LOR_ALT,
-                                       KC_ESC,  _______, KC_DEL,     _______, KC_BTN1, KC_BTN2
+                                       KC_ESC,  _______, KC_TAB,     _______, KC_BTN1, KC_BTN2
     ),
     [_ADM] = LAYOUT_3x12_6(
             RGB_WPM, RGB_SAI, RGB_SAD, RGB_VAI, RGB_VAD, RGB_M_B, KC_COMM, KC_P7,  KC_P8, KC_P9, KC_PPLS, KC_PEQL,
@@ -791,10 +793,14 @@ static layertap layertaps[] = {
     {.tap = KC_ESC, .layer = _SPECIAL},
     // LLS_COMP
     {.tap = KC_F19, .layer = _SPECIAL},
+    // LLS_DEL
+    {.tap = KC_DEL, .layer = _SPECIAL},
     // LLE_ENT
     {.tap = KC_ENT, .layer = _EXTRA, .autorepeat = true},
     // LLA_DEL
-    {.tap = KC_DEL, .layer = _ADM, .autorepeat = true}
+    {.tap = KC_DEL, .layer = _ADM, .autorepeat = true},
+    // LLA_TAB
+    {.tap = KC_TAB, .layer = _ADM, .autorepeat = true}
 };
 #define LAYERTAP(X) layertaps[X - FIRST_LAYER - 1]
 
