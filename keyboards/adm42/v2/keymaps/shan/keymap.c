@@ -193,7 +193,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_EXTRA] = LAYOUT_3x12_6(
             LS_F11,  KC_F1,      KC_F2,     KC_F3,              KC_F4,        KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,        RS_F12,
             KC_LCTL, KC_SLEP,    LSG(KC_4), KC_VOLD,            KC_VOLU,      KC_MUTE, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_MS_WH_UP,   KC_RCTL,
-            KC_LALT, QMK_DATE,   QMK_PASS,  LCTL(RSFT(KC_TAB)), LCTL(KC_TAB), KC_MPLY, KC_HOME, KC_PGDN, KC_MS_U, KC_END,  KC_MS_WH_DOWN, LOR_ALT,
+            KC_LALT, QMK_DATE,   QMK_PASS,  LCTL(RSFT(KC_TAB)), LCTL(KC_TAB), KC_MPLY, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_MS_WH_DOWN, LOR_ALT,
                                        KC_ESC,  _______, KC_TAB,     _______, KC_BTN1, KC_BTN2
     ),
     [_ADM] = LAYOUT_3x12_6(
